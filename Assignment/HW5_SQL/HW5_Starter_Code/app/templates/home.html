@@ -12,17 +12,49 @@
         <table class="striped">
           <thead>
             <tr>
+              <th data-field="customer_id">Customer id</th>
+              <th data-field="first_name">First name</th>
+              <th data-field="last_name">Last name</th>
               <th data-field="company">Company</th>
               <th data-field="email">Email</th>
+              <th data-field="phone">Phone</th>
+              <th>Order<th>
             </tr>
           </thead>
           {% for customer in customers %}
             <tr>
+              <td>{{ customer['customer_id'] }}</td>
+              <td>{{ customer['first_name'] }}</td>
+              <td>{{ customer['last_name'] }}</td>
               <td>{{ customer['company'] }}</td>
               <td>{{ customer['email'] }}</td>
-              <!-- Add more fields to showcase on this page
-              Below is a method of adding the 'add an order' button which will route you to create_order in views.py
-              <td><a href="{{ url_for('create_order', value=customer['customer_id']) }}">Add an Order</a></td> -->
+              <td>{{ customer['phone'] }}</td>
+              <td><a href="{{ url_for('create_order', value=customer['customer_id']) }}">Add an Order</a></td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+      <div class = "section">
+        <h3>Address of the awesome customers: </h3>
+        <table class="striped">
+          <thead>
+            <tr>
+              <th data-field="id">id</th>
+              <th data-field="street_address">street address</th>
+              <th data-field="city">city</th>
+              <th data-field="state">state</th>
+              <th data-field="country">country</th>
+              <th data-field="zip_code">zip code</th>
+            </tr>
+            </thead>
+            {% for address in address %}
+            <tr>
+              <td>{{ address['id'] }}</td>
+              <td>{{ address['street_address'] }}</td>
+              <td>{{ address['city'] }}</td>
+              <td>{{ address['state'] }}</td>
+              <td>{{ address['country'] }}</td>
+              <td>{{ address['zip_code'] }}</td>
             </tr>
           {% endfor %}
         </table>
@@ -30,6 +62,22 @@
       <div class="section">
         <h3>Orders from Customers:</h3>
         <!-- Display all the current existing order information here -->
+        <table class = "striped">
+          <thead>
+            <tr>
+              <th data-field = "order_id">Order ID </th>
+              <th data-field = "name_of_part">Part</th>
+              <th data-field = "manufacturer_of_part">Manufacturer</th>
+            </tr>
+          </thead>
+          {% for item in orders %}
+          <tr>
+            <td>{{ item['order_id'] }}</td>
+            <td>{{ item['name_of_part'] }}</td>
+            <td>{{ item['manufacturer_of_part'] }}</td>
+          </tr>
+          {% endfor %}
+          </table>
       </div>
     </div>
   </div>
